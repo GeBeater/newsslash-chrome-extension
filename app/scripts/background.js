@@ -27,17 +27,35 @@ function parseFeed(feed) {
     console.log(link);
 }
 
-function showNotification(title, text, link) {
-    var notification = webkitNotifications.createNotification("images/icon48.png", "Newsslash - New entry", title);
+function showNotification(title, message, link) {
+
+    var notificationId = "NOTIFICATION_ID_" + title;
+
+    var options = {
+        type: "basic",
+        title: title,
+        message: message,
+        iconUrl: "images/icon48.png"
+    }
+
+    chrome.notifications.create(notificationId, options, function() {
+        // DO NOTHING
+    });
 
     // notification onClick function
-    notification.addEventListener("click", function () {
+    chrome.notifications.onClicked.addListener(function () {
         window.open(link);
-        notification.clear();
+        chrome.notifications.clear(notificationId, function() {
+            // DO NOTHING
+        });
     });
 
     // set notification timeout
-    setTimeout(function() { notification.clear(); }, 5000);
-
-    notification.show();
+    setTimeout(function() {
+        chrome.notifications.clear(notificationId, function() {
+            // DO NOTHING
+        });
+        },
+        5000
+    );
 }

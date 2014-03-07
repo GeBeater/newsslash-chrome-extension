@@ -147,6 +147,7 @@ module.exports = function (grunt) {
             },
             html: [
                 '<%= yeoman.app %>/popup.html',
+                '<%= yeoman.app %>/background.html',
                 '<%= yeoman.app %>/options.html'
             ]
         },
@@ -255,7 +256,7 @@ module.exports = function (grunt) {
                 options: {
                     buildnumber: true,
                     background: {
-                        target:'scripts/background.js'
+
                     }
                 },
                 src: '<%= yeoman.app %>',
