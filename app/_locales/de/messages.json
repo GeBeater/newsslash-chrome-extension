@@ -1,0 +1,10 @@
+{
+  "appName": {
+    "message": "Newsslash",
+    "description": "Aktuelle News zu Games und Tech."
+  },
+  "appDescription": {
+    "message": "Zeigt kürzlich auf Newsslash veröffentlichte Artikel.",
+    "description": "Täglich aktuelle News rund um Games, Tech und Startups."
+  }
+}
