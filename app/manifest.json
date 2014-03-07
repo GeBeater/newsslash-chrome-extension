@@ -1,6 +1,6 @@
 {
     "name": "__MSG_appName__",
-    "version": "0.0.35",
+    "version": "0.0.36",
     "manifest_version": 2,
     "description": "__MSG_appDescription__",
     "icons": {
@@ -17,7 +17,8 @@
     "browser_action": {
         "default_icon": {
             "19": "images/icon19.png",
-            "38": "images/icon38.png"
+            "38": "images/icon38.png",
+            "48": "images/icon48.png"
         },
         "default_title": "newsslash",
         "default_popup": "popup.html"
