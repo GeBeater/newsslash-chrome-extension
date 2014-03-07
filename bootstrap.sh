@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-sudo apt-get -q -y install libpng12-dev libfreetype6-dev libpng++-dev pngquant
+sudo apt-get -q -y install libpng12-dev libfreetype6-dev libpng++-dev pngquant libc6
 
 sudo gem install compass
 
