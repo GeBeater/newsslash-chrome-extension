@@ -23,5 +23,12 @@
         },
         "default_title": "newsslash",
         "default_popup": "popup.html"
-    }
+    },
+    "permissions": [
+        "http://www.newsslash.com/",
+        "storage",
+        "notifications",
+        "background",
+        "tabs"
+    ]
 }
