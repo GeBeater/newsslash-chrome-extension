@@ -211,7 +211,8 @@ module.exports = function (grunt) {
         // Put files not handled in other tasks here
         copy: {
             dist: {
-                files: [{
+                files: [
+                {
                     expand: true,
                     dot: true,
                     cwd: '<%= yeoman.app %>',
@@ -228,7 +229,16 @@ module.exports = function (grunt) {
                     src: [
                         'generated/*'
                     ]
-                }]
+                }, {
+                    src: '<%= yeoman.app %>/bower_components/jQuery/dist/jquery.js',
+                    dest: '<%= yeoman.dist %>/scripts/libs/jquery.js',
+                    filter: 'isFile'
+                }, {
+                    src: '<%= yeoman.app %>/scripts/popup.js',
+                    dest: '<%= yeoman.dist %>/scripts/popup.js',
+                    filter: 'isFile'
+                }
+                ]
             }
         },
         concurrent: {

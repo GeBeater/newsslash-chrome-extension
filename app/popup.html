@@ -2,9 +2,13 @@
 <html>
     <head>
         <link href="styles/main.css" rel="stylesheet">
-        <!-- build:js scripts/popup.js -->
-        <script src="scripts/popup.js"></script>
+
+        <!-- build:js scripts/require.js -->
+        <script src="bower_components/requirejs/require.js"></script>
         <!-- endbuild -->
+
+        <script data-main="scripts/popup" src="scripts/require.js"></script>
+
     </head>
     <body>
         <!-- CHROME EXTENSION POPUP -->
