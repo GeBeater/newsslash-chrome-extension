@@ -8,8 +8,6 @@ sudo ldconfig
 
 echo 'export PATH="/vagrant/node_modules/.bin:$PATH"' >> /home/vagrant/.bashrc && source /home/vagrant/.bashrc
 
-cd /vagrant
+sudo su
 
-npm install
-
-bower install
+echo 'export PATH="/vagrant/node_modules/.bin:$PATH"' >> /root/.bash_profile && source /root/.bash_profile
