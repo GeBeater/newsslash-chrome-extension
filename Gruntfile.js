@@ -212,8 +212,7 @@ module.exports = function (grunt) {
         // Put files not handled in other tasks here
         copy: {
             dist: {
-                files: [
-                {
+                files: [{
                     expand: true,
                     dot: true,
                     cwd: '<%= yeoman.app %>',
@@ -230,8 +229,7 @@ module.exports = function (grunt) {
                     src: [
                         'generated/*'
                     ]
-                }
-                ]
+                }]
             }
         },
         concurrent: {
