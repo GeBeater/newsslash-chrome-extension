@@ -275,10 +275,25 @@ module.exports = function (grunt) {
                     dest: ''
                 }]
             }
+        },
+        shell: {
+            bowerInstall: {
+                options: {
+                    stdout: false
+                },
+                command: 'bower install'
+            },
+            bowerInstallTest: {
+                options: {
+                    stdout: false
+                },
+                command: 'cd test && bower install'
+            }
         }
     });
 
     grunt.registerTask('test', [
+        'shell:bowerInstallTest',
         'clean:server',
         'concurrent:test',
         'connect:test',
@@ -286,6 +301,7 @@ module.exports = function (grunt) {
     ]);
 
     grunt.registerTask('build', [
+        'shell:bowerInstall',
         'clean:dist',
         'chromeManifest:dist',
         'useminPrepare',
