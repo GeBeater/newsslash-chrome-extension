@@ -291,6 +291,7 @@ module.exports = function (grunt) {
     });
 
     grunt.registerTask('test', [
+        'jshint',
         'shell:bowerInstallTest',
         'clean:server',
         'concurrent:test',
@@ -313,7 +314,6 @@ module.exports = function (grunt) {
     ]);
 
     grunt.registerTask('default', [
-        'jshint',
         'test',
         'build'
     ]);
