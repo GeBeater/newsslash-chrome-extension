@@ -285,7 +285,7 @@ module.exports = function (grunt) {
                 options: {
                     stdout: false
                 },
-                command: 'cd test && bower install'
+                command: 'cd test && ../node_modules/bower/bin/bower install && cd ..'
             }
         }
     });
