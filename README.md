@@ -5,6 +5,9 @@ newsslash-chrome-extension
 
 [![Built with Grunt](https://cdn.gruntjs.com/builtwith.png)](http://gruntjs.com/)
 
+A [Google Chrome Extension](https://developer.chrome.com/extensions/index) which enhance the functionality of the Chrome
+Browser to the effect that the user will automatically on notice of news from [Newsslash](http://www.newsslash.com/).
+Furthermore the user has the possibility to view a list of all Newsslash article.
 
 ## License
 
