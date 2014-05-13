@@ -15,12 +15,24 @@ function showNotification(title, message, link) {
         // DO NOTHING
     });
 
+    var notificationAlreadyShown = false;
+
     // notification onClick function
     chrome.notifications.onClicked.addListener(function () {
+        // show this notification only once
+        if (notificationAlreadyShown) {
+            // notification already shown; don't show up again
+            return;
+        }
+
+        // show notification
         window.open(link);
         chrome.notifications.clear(notificationId, function() {
             // DO NOTHING
         });
+
+        // notification shown; don't show up again
+        notificationAlreadyShown = true;
     });
 
     // set notification timeout
