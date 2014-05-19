@@ -15,12 +15,24 @@ function showNotification(title, message, link) {
         // DO NOTHING
     });
 
+    var tabAlreadyOpened = false;
+
     // notification onClick function
     chrome.notifications.onClicked.addListener(function () {
+        // check, if this tab was already opened
+        if (tabAlreadyOpened) {
+            // tab already opened; don't open again
+            return;
+        }
+
+        // open link
         window.open(link);
         chrome.notifications.clear(notificationId, function() {
             // DO NOTHING
         });
+
+        // notification opened link; don't open it any more
+        tabAlreadyOpened = true;
     });
 
     // set notification timeout
