@@ -1,6 +1,9 @@
 'use strict';
 
-function showNotification(title, message, link) {
+/**
+ * Function for showing the notification.
+ */
+function showNotification(title, message) {
 
     var notificationId = 'NOTIFICATION_ID_' + title;
 
@@ -15,26 +18,6 @@ function showNotification(title, message, link) {
         // DO NOTHING
     });
 
-    var tabAlreadyOpened = false;
-
-    // notification onClick function
-    chrome.notifications.onClicked.addListener(function () {
-        // check, if this tab was already opened
-        if (tabAlreadyOpened) {
-            // tab already opened; don't open again
-            return;
-        }
-
-        // open link
-        window.open(link);
-        chrome.notifications.clear(notificationId, function() {
-            // DO NOTHING
-        });
-
-        // notification opened link; don't open it any more
-        tabAlreadyOpened = true;
-    });
-
     // set notification timeout
     setTimeout(function() {
             chrome.notifications.clear(notificationId, function() {
@@ -45,6 +28,9 @@ function showNotification(title, message, link) {
     );
 }
 
+/**
+ * Function for parsing the ajax result. Will store the actual news in localstorage.
+ */
 function parseFeed(feed) {
 
     var title = $('item', feed).find('title').eq(0).text();
@@ -54,18 +40,21 @@ function parseFeed(feed) {
     var lastItem = localStorage.getItem('lastItem');
 
     if (false === lastItem|| lastItem !== title) {
-        showNotification(title, text, link);
+        showNotification(title, text);
     }
 
     localStorage.setItem('lastItem', title);
+    localStorage.setItem('lastItemUrl', link);
 
     console.log(title);
     console.log(text);
     console.log(link);
 }
 
+/**
+ * This function is the background-lifecycle. Will call itself after timeout.
+ */
 function nextTick() {
-
     $.ajax({
             type: 'GET',
             dataType: 'xml',
@@ -78,6 +67,25 @@ function nextTick() {
     setTimeout(nextTick, 60000);
 }
 
+/**
+ * Function for setting the listener for the notifications. This function will be called once.
+ */
+function setNotificationListener() {
+    // notification onClick function
+    chrome.notifications.onClicked.addListener(function () {
+
+        // open link
+        window.open(localStorage.getItem('lastItemUrl'));
+        chrome.notifications.clear(notificationId, function() {
+            // DO NOTHING
+        });
+    });
+}
+
+/**
+ * This function starts the background logic. This function will be called once.
+ */
 $(document).ready(function() {
+    setNotificationListener();
     nextTick();
 });
