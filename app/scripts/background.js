@@ -76,9 +76,7 @@ function setNotificationListener() {
 
         // open link
         window.open(localStorage.getItem('lastItemUrl'));
-        chrome.notifications.clear(notificationId, function() {
-            // DO NOTHING
-        });
+        chrome.notifications.clear();
     });
 }
 
